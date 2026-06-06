@@ -1,0 +1,23 @@
+import { GEMINI_API_KEY, GEMINI_MODEL } from "./config.js";
+import { buildGeminiPrompt, parseGeminiRecipe } from "./utils.js";
+
+export async function structureRecipe(transcript) {
+  const url =
+    `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+  const body = {
+    contents: [{ parts: [{ text: buildGeminiPrompt(transcript) }] }],
+    generationConfig: { temperature: 0.2, responseMimeType: "application/json" },
+  };
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    const txt = await res.text();
+    throw new Error(`Gemini error ${res.status}: ${txt}`);
+  }
+  const json = await res.json();
+  const text = json?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+  return parseGeminiRecipe(text);
+}
