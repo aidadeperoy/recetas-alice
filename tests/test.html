@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tests · Las Recetas de Alice</title>
+  <style>
+    body { font-family: monospace; padding: 20px; background: #1e1e1e; color: #ddd; }
+    .ok { color: #6bd16b; }
+    .fail { color: #e26b6b; }
+    #summary { font-size: 1.2rem; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <h1>Tests</h1>
+  <pre id="out"></pre>
+  <div id="summary"></div>
+  <script type="module">
+    // Browser test runner. Test files call the global test()/assertEqual().
+    let passed = 0, failed = 0;
+    const lines = [];
+    const failures = [];
+
+    window.test = async (name, fn) => {
+      try {
+        await fn();
+        passed++;
+        lines.push('  ✓ ' + name);
+      } catch (err) {
+        failed++;
+        lines.push('  ✗ ' + name);
+        failures.push(name + ': ' + err.message);
+      }
+    };
+    window.assertEqual = (actual, expected, msg) => {
+      const a = JSON.stringify(actual);
+      const e = JSON.stringify(expected);
+      if (a !== e) {
+        throw new Error((msg || 'assertEqual') + ': expected ' + e + ' but got ' + a);
+      }
+    };
+
+    // List every test module here (browser can't read the directory).
+    const TEST_MODULES = ['./utils.test.mjs'];
+
+    for (const mod of TEST_MODULES) {
+      lines.push('\n' + mod);
+      try {
+        await import(mod);
+      } catch (err) {
+        failed++;
+        lines.push('  ✗ could not load ' + mod);
+        failures.push('load ' + mod + ': ' + err.message);
+      }
+    }
+
+    // Allow any fire-and-forget async test() calls to settle.
+    await new Promise((r) => setTimeout(r, 50));
+
+    const summary = passed + ' passed, ' + failed + ' failed';
+    const out = document.getElementById('out');
+    out.textContent = lines.join('\n') + (failures.length ? '\n\nFAILURES:\n' + failures.join('\n') : '');
+    const sumEl = document.getElementById('summary');
+    sumEl.textContent = summary;
+    sumEl.className = failed === 0 ? 'ok' : 'fail';
+    document.title = (failed === 0 ? 'PASS' : 'FAIL') + ' — ' + summary;
+    window.__testResult = { passed, failed, summary, failures };
+  </script>
+</body>
+</html>
