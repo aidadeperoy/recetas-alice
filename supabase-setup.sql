@@ -48,3 +48,7 @@ create policy "fotos_public_read"
 create policy "fotos_auth_write"
   on storage.objects for insert
   to authenticated with check (bucket_id = 'fotos');
+
+create policy "fotos_auth_delete"
+  on storage.objects for delete
+  to authenticated using (bucket_id = 'fotos');

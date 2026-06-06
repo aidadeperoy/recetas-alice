@@ -1,8 +1,18 @@
 import {
+  escapeHtml,
   youtubeIdFromUrl, youtubeEmbedUrl,
   formatMinutes, totalTime, validateRecipe,
   buildGeminiPrompt, parseGeminiRecipe, CATEGORIES,
 } from "../js/utils.js";
+
+test("escapeHtml escapes angle brackets and quotes", () => {
+  assertEqual(escapeHtml('<script>"x"</script>'), "&lt;script&gt;&quot;x&quot;&lt;/script&gt;");
+});
+
+test("escapeHtml returns empty string for null/undefined", () => {
+  assertEqual(escapeHtml(null), "");
+  assertEqual(escapeHtml(undefined), "");
+});
 
 test("youtubeIdFromUrl extracts id from watch url", () => {
   assertEqual(youtubeIdFromUrl("https://www.youtube.com/watch?v=dQw4w9WgXcQ"), "dQw4w9WgXcQ");

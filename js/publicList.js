@@ -1,5 +1,5 @@
 import { listRecipes } from "./recipesApi.js";
-import { CATEGORIES, formatMinutes, totalTime } from "./utils.js";
+import { CATEGORIES, formatMinutes, totalTime, escapeHtml } from "./utils.js";
 
 const gridEl = document.getElementById("grid");
 const estadoEl = document.getElementById("estado");
@@ -16,15 +16,15 @@ for (const c of CATEGORIES) {
 
 function cardHtml(r) {
   const foto = r.foto_url
-    ? `<img src="${r.foto_url}" alt="${r.titulo}" loading="lazy" />`
+    ? `<img src="${escapeHtml(r.foto_url)}" alt="${escapeHtml(r.titulo)}" loading="lazy" />`
     : `<div class="sin-foto">🍽️</div>`;
   const t = formatMinutes(totalTime(r));
   return `
-    <a class="tarjeta" href="receta.html?id=${r.id}">
+    <a class="tarjeta" href="receta.html?id=${encodeURIComponent(r.id)}">
       ${foto}
       <div class="cuerpo">
-        <span class="etiqueta">${r.categoria || "Otros"}</span>
-        <h3>${r.titulo}</h3>
+        <span class="etiqueta">${escapeHtml(r.categoria || "Otros")}</span>
+        <h3>${escapeHtml(r.titulo)}</h3>
         <div class="meta">${t ? "⏱ " + t : ""}</div>
       </div>
     </a>`;

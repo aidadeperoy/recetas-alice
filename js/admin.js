@@ -2,7 +2,7 @@ import { supabase } from "./supabaseClient.js";
 import {
   listRecipes, createRecipe, updateRecipe, deleteRecipe, uploadPhoto,
 } from "./recipesApi.js";
-import { CATEGORIES, validateRecipe } from "./utils.js";
+import { CATEGORIES, validateRecipe, escapeHtml } from "./utils.js";
 import { isSpeechSupported, createRecorder } from "./speech.js";
 import { structureRecipe } from "./gemini.js";
 
@@ -57,10 +57,10 @@ async function refreshList() {
   for (const r of recipes) {
     const li = document.createElement("li");
     li.innerHTML = `
-      <span>${r.titulo}</span>
+      <span>${escapeHtml(r.titulo)}</span>
       <span class="acciones">
-        <button data-edit="${r.id}">✏️</button>
-        <button data-del="${r.id}">🗑️</button>
+        <button data-edit="${escapeHtml(r.id)}">✏️</button>
+        <button data-del="${escapeHtml(r.id)}">🗑️</button>
       </span>`;
     ul.appendChild(li);
   }

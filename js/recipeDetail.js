@@ -29,6 +29,7 @@ function render(r) {
     ? `<div class="seccion"><h2>Consejos</h2><p>${esc(r.consejos)}</p></div>`
     : "";
 
+  document.title = (r.titulo ? esc(r.titulo) + " · " : "") + "Las Recetas de Alice";
   contenido.innerHTML = `
     ${foto}
     <h1 class="receta-titulo">${esc(r.titulo)}</h1>
