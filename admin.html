@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Panel · Las Recetas de Alice</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <header class="cabecera"><h1>Panel de Alice</h1></header>
+  <main class="admin-main">
+
+    <!-- LOGIN -->
+    <section id="vista-login">
+      <div class="campo">
+        <label for="email">Email</label>
+        <input id="email" type="email" autocomplete="username" />
+      </div>
+      <div class="campo">
+        <label for="password">Contrasena</label>
+        <input id="password" type="password" autocomplete="current-password" />
+      </div>
+      <button id="btn-login" class="btn">Entrar</button>
+      <p id="login-error" class="error"></p>
+    </section>
+
+    <!-- LIST -->
+    <section id="vista-lista" class="oculto">
+      <button id="btn-grabar" class="btn">🎙 Grabar receta</button>
+      <button id="btn-manual" class="btn secundario">✍️ Escribir manualmente</button>
+      <ul id="lista-recetas" class="lista-recetas"></ul>
+      <button id="btn-logout" class="btn fantasma">Cerrar sesion</button>
+    </section>
+
+    <!-- RECORDING -->
+    <section id="vista-grabar" class="oculto">
+      <div class="grabando">
+        <p><span class="punto-rojo"></span> Grabando... habla tu receta</p>
+        <div id="transcripcion" class="transcripcion"></div>
+        <button id="btn-parar" class="btn">Parar y procesar</button>
+        <button id="btn-cancelar-grabar" class="btn fantasma">Cancelar</button>
+      </div>
+      <p id="grabar-error" class="error"></p>
+    </section>
+
+    <!-- FORM -->
+    <section id="vista-form" class="oculto">
+      <p id="procesando" class="aviso oculto">Procesando con IA...</p>
+      <div class="campo"><label>Titulo</label><input id="f-titulo" /></div>
+      <div class="campo"><label>Categoria</label><select id="f-categoria"></select></div>
+      <div class="campo"><label>Descripcion</label><textarea id="f-descripcion"></textarea></div>
+      <div class="campo"><label>Tiempo preparacion (min)</label><input id="f-prep" type="number" /></div>
+      <div class="campo"><label>Tiempo coccion (min)</label><input id="f-coccion" type="number" /></div>
+      <div class="campo"><label>Raciones</label><input id="f-raciones" type="number" /></div>
+      <div class="campo"><label>Ingredientes (uno por linea)</label><textarea id="f-ingredientes"></textarea></div>
+      <div class="campo"><label>Pasos (uno por linea)</label><textarea id="f-pasos"></textarea></div>
+      <div class="campo"><label>Consejos</label><textarea id="f-consejos"></textarea></div>
+      <div class="campo"><label>Link de YouTube</label><input id="f-youtube" placeholder="https://youtu.be/..." /></div>
+      <div class="campo"><label>Foto de portada</label><input id="f-foto" type="file" accept="image/*" /></div>
+      <p id="form-error" class="error"></p>
+      <button id="btn-guardar" class="btn">Guardar receta</button>
+      <button id="btn-cancelar-form" class="btn fantasma">Cancelar</button>
+    </section>
+
+  </main>
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
