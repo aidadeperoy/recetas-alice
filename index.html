@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Las Recetas de Alice</title>
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+  <header class="cabecera">
+    <h1>Las Recetas de Alice</h1>
+    <p>La cocina de casa, paso a paso</p>
+  </header>
+  <main class="contenedor">
+    <div class="buscador-fila">
+      <input id="buscar" type="search" placeholder="Buscar receta..." />
+      <select id="filtro-categoria"><option value="">Todas las categorias</option></select>
+    </div>
+    <div id="grid" class="grid"></div>
+    <p id="estado" class="estado">Cargando recetas...</p>
+  </main>
+  <script type="module" src="js/publicList.js"></script>
+</body>
+</html>
