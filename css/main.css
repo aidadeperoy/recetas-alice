@@ -51,7 +51,7 @@ a { color: var(--terracota-osc); }
 /* ---------- Hero (home) ---------- */
 .hero {
   position: relative;
-  min-height: clamp(460px, 75vh, 680px);
+  min-height: clamp(460px, 56.25vw, 900px);
   display: flex;
   align-items: center;
   justify-content: flex-end;
