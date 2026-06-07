@@ -203,7 +203,7 @@ document.getElementById("btn-parar").addEventListener("click", async () => {
     fillForm(r);
   } catch (e) {
     document.getElementById("form-error").textContent =
-      "La IA no pudo procesar el audio. Puedes rellenar la receta a mano.";
+      "Error IA: " + e.message + ". Puedes rellenar a mano.";
     document.getElementById("f-descripcion").value = transcript;
     console.error(e);
   } finally {
