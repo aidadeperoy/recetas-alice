@@ -51,25 +51,29 @@ a { color: var(--terracota-osc); }
 /* ---------- Hero (home) ---------- */
 .hero {
   position: relative;
-  min-height: clamp(480px, 72vh, 780px);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  color: #fff;
   overflow: hidden;
-  background-image:
-    linear-gradient(to left, rgba(10,5,2,0.88) 0%, rgba(10,5,2,0.52) 42%, rgba(10,5,2,0.0) 72%),
-    linear-gradient(to top, rgba(10,5,2,0.50) 0%, transparent 38%),
-    url("../assets/hero.jpg"),
-    linear-gradient(135deg, #8F4527, #5d3a24);
-  background-size: cover;
-  background-position: center 30%;
-  background-repeat: no-repeat;
+  color: #fff;
+  background: #221F1B;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to left, rgba(10,5,2,0.92) 0%, rgba(10,5,2,0.60) 38%, rgba(10,5,2,0.0) 62%);
+  pointer-events: none;
+}
+.hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 .hero-contenido {
-  position: relative;
+  position: absolute;
   z-index: 1;
-  padding: 48px 64px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 64px;
   max-width: 500px;
   text-align: right;
 }
@@ -80,20 +84,27 @@ a { color: var(--terracota-osc); }
   line-height: 0.96;
   letter-spacing: -0.04em;
   margin: 0;
-  text-shadow: 0 2px 24px rgba(0,0,0,0.35);
+  text-shadow: 0 2px 24px rgba(0,0,0,0.4);
 }
 
 @media (max-width: 600px) {
-  .hero {
-    align-items: flex-end;
-    justify-content: center;
-    background-image:
-      linear-gradient(to top, rgba(10,5,2,0.88) 0%, rgba(10,5,2,0.35) 55%, transparent 100%),
-      url("../assets/hero.jpg"),
-      linear-gradient(135deg, #8F4527, #5d3a24);
-    background-position: center 20%;
+  .hero-img {
+    height: 460px;
+    object-fit: cover;
+    object-position: center 20%;
   }
-  .hero-contenido { padding: 0 24px 44px; text-align: center; max-width: 100%; }
+  .hero::after {
+    background: linear-gradient(to top, rgba(10,5,2,0.88) 0%, rgba(10,5,2,0.30) 55%, transparent 100%);
+  }
+  .hero-contenido {
+    top: auto;
+    bottom: 0;
+    transform: none;
+    right: 0; left: 0;
+    padding: 0 24px 44px;
+    text-align: center;
+    max-width: 100%;
+  }
   .hero h1 { font-size: 2.4rem; }
   .hero h1 br { display: none; }
 }
