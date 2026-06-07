@@ -91,7 +91,7 @@ a { color: var(--terracota-osc); }
 }
 
 @media (max-width: 600px) {
-  .hero { justify-content: flex-end; align-items: flex-start; text-align: right; }
+  .hero { justify-content: flex-end; align-items: flex-start; text-align: right; background-position: 65% center; }
   .hero-contenido { padding: 24px 20px 0 0; max-width: 220px; }
   .hero h1 { font-size: 1.6rem; }
 }
