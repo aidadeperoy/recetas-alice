@@ -77,7 +77,6 @@ a { color: var(--terracota-osc); }
   font-size: clamp(2.4rem, 6vw, 4.4rem);
   line-height: 1.04;
   letter-spacing: -0.03em;
-  text-transform: uppercase;
   margin: 0;
   text-shadow: 0 2px 40px rgba(0,0,0,0.5);
 }
@@ -89,6 +88,11 @@ a { color: var(--terracota-osc); }
   font-style: italic;
   font-family: var(--serif);
   font-weight: 400;
+}
+
+@media (max-width: 600px) {
+  .hero { justify-content: center; align-items: flex-end; text-align: center; }
+  .hero-contenido { padding: 0 20px 32px; max-width: 100%; }
 }
 
 /* ---------- Search bar ---------- */
