@@ -67,7 +67,7 @@ a { color: var(--terracota-osc); }
     radial-gradient(circle at 75% 70%, #7c5a3a, transparent 55%),
     linear-gradient(135deg, #8F4527, #5d3a24);
   background-size: cover;
-  background-position: center center;
+  background-position: center 20%;
   background-repeat: no-repeat;
 }
 .hero-contenido { position: relative; z-index: 1; padding: 32px 48px 32px 20px; max-width: 560px; }
