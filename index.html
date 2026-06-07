@@ -5,16 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
   <title>Las Recetas de Alice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
-  <header class="cabecera">
-    <h1>Las Recetas de Alice</h1>
-    <p>La cocina de casa, paso a paso</p>
+  <header class="hero" id="hero">
+    <div class="hero-contenido">
+      <p class="hero-kicker">Recetario de familia</p>
+      <h1>Las Recetas de Alice</h1>
+      <p>La cocina de casa, contada paso a paso.</p>
+    </div>
   </header>
   <main class="contenedor">
+    <h2 class="seccion-titulo">Todas las recetas</h2>
     <div class="buscador-fila">
-      <input id="buscar" type="search" placeholder="Buscar receta..." />
+      <input id="buscar" type="search" placeholder="Buscar por nombre o ingrediente..." />
       <select id="filtro-categoria"><option value="">Todas las categorias</option></select>
     </div>
     <div id="grid" class="grid"></div>

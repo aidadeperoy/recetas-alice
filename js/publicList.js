@@ -45,7 +45,10 @@ function applyFilters() {
   const q = buscarEl.value.trim().toLowerCase();
   const cat = filtroEl.value;
   const filtered = allRecipes.filter((r) => {
-    const matchesQ = !q || (r.titulo || "").toLowerCase().includes(q);
+    const enTitulo = (r.titulo || "").toLowerCase().includes(q);
+    const enIngredientes = (r.ingredientes || []).some((ing) =>
+      String(ing).toLowerCase().includes(q));
+    const matchesQ = !q || enTitulo || enIngredientes;
     const matchesCat = !cat || r.categoria === cat;
     return matchesQ && matchesCat;
   });
