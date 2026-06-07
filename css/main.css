@@ -65,8 +65,7 @@ a { color: var(--terracota-osc); }
 .hero-img {
   display: block;
   width: 100%;
-  height: auto;
-  max-height: 82vh;
+  height: 78vh;
   object-fit: cover;
   object-position: center 30%;
 }
