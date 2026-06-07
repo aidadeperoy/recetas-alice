@@ -67,7 +67,7 @@ a { color: var(--terracota-osc); }
     radial-gradient(circle at 75% 70%, #7c5a3a, transparent 55%),
     linear-gradient(135deg, #8F4527, #5d3a24);
   background-size: cover;
-  background-position: center top;
+  background-position: center 70%;
   background-repeat: no-repeat;
 }
 .hero::after {
