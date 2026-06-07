@@ -37,6 +37,19 @@ Edita `js/config.js` y rellena `SUPABASE_URL`, `SUPABASE_ANON_KEY` y `GEMINI_API
 4. Revisa, corrige, añade el link de YouTube y la foto, y pulsa **Guardar**.
 5. Para editar, pulsa ✏️ en la lista; para borrar, 🗑️.
 
+## Foto de portada (hero)
+La página de inicio muestra una foto grande de bienvenida. Para poner la tuya,
+crea una carpeta `assets/` y guarda dentro una imagen llamada **`hero.jpg`**
+(apaisada, mínimo ~1600px de ancho). Si no hay foto, se muestra un degradado
+cálido de respaldo automáticamente.
+
+## Funciones de cada receta
+- **🖨 Imprimir / PDF:** vista limpia para papel o "Guardar como PDF".
+- **💬 Compartir:** envía el enlace de la receta por WhatsApp.
+- **👩‍🍳 Modo cocina:** pasos a pantalla completa, navegables con flechas, y
+  mantiene la pantalla encendida (Wake Lock) mientras cocinas.
+- **🔍 Buscar:** el buscador encuentra recetas por nombre **y por ingrediente**.
+
 ## Hacer la web pública (más adelante)
 Quita la línea `<meta name="robots" content="noindex" />` de `index.html`,
 `receta.html` y `admin.html` para permitir que Google la indexe.
