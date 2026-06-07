@@ -3,17 +3,14 @@ import { buildGeminiPrompt, parseGeminiRecipe } from "./utils.js";
 
 export async function structureRecipe(transcript) {
   const url =
-    `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+    `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
   const body = {
     contents: [{ parts: [{ text: buildGeminiPrompt(transcript) }] }],
-    generationConfig: { temperature: 0.2, responseMimeType: "application/json" },
+    generationConfig: { temperature: 0.2 },
   };
   const res = await fetch(url, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-goog-api-key": GEMINI_API_KEY,
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
   });
   if (!res.ok) {
