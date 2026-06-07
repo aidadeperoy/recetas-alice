@@ -2,11 +2,11 @@ import { GEMINI_API_KEY, GEMINI_MODEL } from "./config.js";
 import { buildGeminiPrompt, parseGeminiRecipe } from "./utils.js";
 
 export async function structureRecipe(transcript) {
-  const url =
-    `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+  const url = "https://api.groq.com/openai/v1/chat/completions";
   const body = {
-    contents: [{ parts: [{ text: buildGeminiPrompt(transcript) }] }],
-    generationConfig: { temperature: 0.2 },
+    model: GEMINI_MODEL,
+    messages: [{ role: "user", content: buildGeminiPrompt(transcript) }],
+    temperature: 0.2,
   };
   const res = await fetch(url, {
     method: "POST",
@@ -18,9 +18,9 @@ export async function structureRecipe(transcript) {
   });
   if (!res.ok) {
     const txt = await res.text();
-    throw new Error(`Gemini error ${res.status}: ${txt}`);
+    throw new Error(`Groq error ${res.status}: ${txt}`);
   }
   const json = await res.json();
-  const text = json?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+  const text = json?.choices?.[0]?.message?.content || "";
   return parseGeminiRecipe(text);
 }

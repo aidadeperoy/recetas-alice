@@ -7,7 +7,7 @@ export const SUPABASE_ANON_KEY = "sb_publishable_Hp1wV6DD6twu8hWDAC-16g_NWMCdwLI
 // Google AI Studio: https://aistudio.google.com/app/apikey
 // NOTE: this key is visible in the browser. Restrict it in Google Cloud Console
 // to the Generative Language API and to your GitHub Pages domain (HTTP referrer).
-export const GEMINI_API_KEY = "AQ.Ab8RN6Jvs5wP0FGYp-U4UhFFJbzyVj3achSbikCZvqfbT9kPHQ";
+export const GEMINI_API_KEY = "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";
 
-export const GEMINI_MODEL = "gemini-flash-latest";
+export const GEMINI_MODEL = "llama-3.1-8b-instant";
 export const STORAGE_BUCKET = "fotos";

@@ -191,7 +191,6 @@ document.getElementById("btn-parar").addEventListener("click", async () => {
     document.getElementById("grabar-error").textContent = "No se capto audio. Intenta de nuevo.";
     return;
   }
-  // Go to form, show processing, then fill with AI result.
   editingId = null;
   fillForm({ categoria: "Otros" });
   document.getElementById("form-error").textContent = "";
@@ -203,7 +202,7 @@ document.getElementById("btn-parar").addEventListener("click", async () => {
     fillForm(r);
   } catch (e) {
     document.getElementById("form-error").textContent =
-      "Error IA: " + e.message + ". Puedes rellenar a mano.";
+      "La IA no pudo procesar el audio. Puedes rellenar la receta a mano.";
     document.getElementById("f-descripcion").value = transcript;
     console.error(e);
   } finally {
